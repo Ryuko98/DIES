@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIES - Diésel Inyección El Salvador | Laboratorio Especializado</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#013A88',
+                        brandBlueHover: '#012A66',
+                        brandBlueLight: '#EBF2FA',
+                        brandWhite: '#FCFCFC',
+                        brandGray: '#F3F4F6',
+                        brandDark: '#1E293B',
+                        accentGold: '#F59E0B'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar styling for independent document readers */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #94A3B8;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #013A88;
+        }
+    </style>
+</head>
+<body class="bg-brandWhite text-slate-800 font-sans antialiased selection:bg-brandBlue selection:text-white">
+
+    <!-- HEADER / NAVIGATION BAR (HHKeyboard inspired minimalist floating style) -->
+    <header class="sticky top-0 z-50 bg-brandWhite/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Brand Logo & Tagline -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-brandBlue rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform duration-200">
+                        <i class="fa-solid fa-gears text-lg sm:text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-black tracking-wider text-brandBlue block leading-none">DIES</span>
+                        <span class="text-[10px] sm:text-xs font-semibold tracking-widest text-slate-500 uppercase">Diésel Inyección El Salvador</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200 text-xs sm:text-sm font-medium text-slate-600">
+                    <a href="#inicio" class="px-4 py-2 rounded-full hover:text-brandBlue hover:bg-white transition-all">Inicio</a>
+                    <a href="#servicios" class="px-4 py-2 rounded-full hover:text-brandBlue hover:bg-white transition-all">Servicios</a>
+                    <a href="#garantia" class="px-4 py-2 rounded-full hover:text-brandBlue hover:bg-white transition-all">Garantía 360°</a>
+                    <a href="#proceso" class="px-4 py-2 rounded-full hover:text-brandBlue hover:bg-white transition-all">¿Cómo Trabajamos?</a>
+                    <a href="#documentos" class="px-4 py-2 rounded-full hover:text-brandBlue hover:bg-white transition-all">Atestados y Docs</a>
+                    <a href="#contacto" class="px-4 py-2 rounded-full hover:text-brandBlue hover:bg-white transition-all">Contacto</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="tel:12345678" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brandBlue text-white font-semibold text-xs sm:text-sm shadow-md hover:bg-brandBlueHover hover:shadow-lg transition-all">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>1234-5678</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-slate-600 hover:text-brandBlue hover:bg-slate-100 focus:outline-none" aria-label="Abrir Menú">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brandWhite border-b border-slate-200 px-4 pt-2 pb-6 space-y-2">
+            <a href="#inicio" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-brandBlueLight hover:text-brandBlue font-medium">Inicio</a>
+            <a href="#servicios" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-brandBlueLight hover:text-brandBlue font-medium">Servicios</a>
+            <a href="#garantia" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-brandBlueLight hover:text-brandBlue font-medium">Garantía 360°</a>
+            <a href="#proceso" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-brandBlueLight hover:text-brandBlue font-medium">¿Cómo Trabajamos?</a>
+            <a href="#documentos" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-brandBlueLight hover:text-brandBlue font-medium">Atestados y Documentos</a>
+            <a href="#contacto" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-700 hover:bg-brandBlueLight hover:text-brandBlue font-medium">Contacto</a>
+            <div class="pt-2 border-t border-slate-100">
+                <a href="tel:12345678" class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-brandBlue text-white font-semibold text-sm">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Llamar al 1234-5678</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HERO SECTION (#FCFCFC) -->
+    <section id="inicio" class="relative py-16 sm:py-24 lg:py-28 overflow-hidden bg-brandWhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brandBlueLight border border-brandBlue/20 text-brandBlue text-xs sm:text-sm font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-brandBlue animate-pulse"></span>
+                        <span>Proyecto realizado por Hernández y Rivas</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        Laboratorio Especializado en <span class="text-brandBlue">Inyectores Diésel</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-6xl text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Diagnóstico, reparación y reconstrucción de inyectores Common Rail inductivos y piezoeléctricos de las marcas líderes: <strong>BOSCH, DENSO y DELPHI</strong>. Respaldo total con nuestra Garantía 360°.
+                    </p>
+
+                    <!-- Feature Tags -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2 text-xs sm:text-sm text-slate-700 font-semibold">
+                        <div class="flex items-center gap-2 bg-slate-100 px-3.5 py-2 rounded-lg border border-slate-200">
+                            <i class="fa-solid fa-check text-brandBlue"></i>
+                            <span>Banco de Pruebas CR718</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-slate-100 px-3.5 py-2 rounded-lg border border-slate-200">
+                            <i class="fa-solid fa-truck-ramp-box text-brandBlue"></i>
+                            <span>Servicio de Recolección</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-slate-100 px-3.5 py-2 rounded-lg border border-slate-200">
+                            <i class="fa-solid fa-shield-halved text-brandBlue"></i>
+                            <span>Garantía 360°</span>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#servicios" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-brandBlue text-white font-bold text-sm shadow-lg shadow-brandBlue/20 hover:bg-brandBlueHover hover:shadow-xl transition-all text-center">
+                            Ver Servicios y Tarifas
+                        </a>
+                        <a href="#documentos" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white text-slate-700 border border-slate-300 font-bold text-sm shadow-sm hover:bg-slate-50 transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-file-contract text-brandBlue"></i>
+                            <span>Ver Atestados Completos</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Banner Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative bg-gradient-to-br from-brandBlue to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-2xl overflow-hidden border border-brandBlue/30">
+                        <div class="absolute -right-10 -bottom-10 opacity-10 text-white">
+                            <i class="fa-solid fa-screwdriver-wrench text-9xl"></i>
+                        </div>
+
+                        <!-- Card Header -->
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-microscope text-xl text-yellow-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-base">Laboratorio DIES</h3>
+                                    <p class="text-xs text-blue-200">Tecnología de Diagnóstico</p>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 bg-yellow-400/20 text-yellow-300 border border-yellow-400/30 rounded-full text-[11px] font-bold">
+                                Alta Calidad
+                            </span>
+                        </div>
+
+                        <!-- Supported Brands Logos/Tags -->
+                        <div class="space-y-4">
+                            <p class="text-xs text-blue-200 uppercase font-bold tracking-wider">Marcas Atendidas en Banco</p>
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="bg-white/10 rounded-xl p-3 text-center border border-white/10 backdrop-blur-sm">
+                                    <span class="block font-black text-sm tracking-widest text-white">BOSCH</span>
+                                    <span class="text-[10px] text-blue-200">Inductivo / Piezo</span>
+                                </div>
+                                <div class="bg-white/10 rounded-xl p-3 text-center border border-white/10 backdrop-blur-sm">
+                                    <span class="block font-black text-sm tracking-widest text-white">DENSO</span>
+                                    <span class="text-[10px] text-blue-200">Common Rail</span>
+                                </div>
+                                <div class="bg-white/10 rounded-xl p-3 text-center border border-white/10 backdrop-blur-sm">
+                                    <span class="block font-black text-sm tracking-widest text-white">DELPHI</span>
+                                    <span class="text-[10px] text-blue-200">Solenoides C2I</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-blue-200">
+                                <span><i class="fa-solid fa-location-dot text-red-400 mr-1.5"></i>San Martín, El Salvador</span>
+                                <span><i class="fa-solid fa-clock text-blue-300 mr-1.5"></i>Lun - Sáb: 8am - 5pm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: SERVICIOS (#013A88 - Deep Blue Background) -->
+    <section id="servicios" class="py-16 sm:py-24 bg-brandBlue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-yellow-300 text-xs font-semibold uppercase tracking-wider">
+                    Soluciones Especializadas
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 mb-4 tracking-tight">Nuestros Servicios Técnicos</h2>
+                <p class="text-blue-100 text-sm sm:text-base">
+                    Brindamos soporte integral para talleres mecánicos, flotas y particulares en todo El Salvador con diagnósticos precisos en banco computarizado.
+                </p>
+            </div>
+
+            <!-- Grid of Services -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Service 1 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-yellow-400 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Reparación Completa</h3>
+                        <p class="text-xs text-blue-100 leading-relaxed mb-4">
+                            Restauramos y reconfiguraremos tu inyector reemplazando toberas, válvulas y sellos. Calibración en banco de pruebas CR718.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-yellow-400 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-vial-circle-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Diagnóstico y Ultrasonido</h3>
+                        <p class="text-xs text-blue-100 leading-relaxed mb-4">
+                            Evaluación técnica en banco computarizado, detección de fugas internas y limpieza profunda mediante tina de ultrasonido.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-yellow-400 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Inyectores Nuevos y Reman</h3>
+                        <p class="text-xs text-blue-100 leading-relaxed mb-4">
+                            Venta directa e instalación de inyectores totalmente nuevos o unidades remanufacturadas listas para entrega inmediata en stock.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-yellow-400 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-motorcycle"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Recolección y Entrega</h3>
+                        <p class="text-xs text-blue-100 leading-relaxed mb-4">
+                            Retiramos y devolvemos tus inyectores directamente en tu taller o domicilio en la zona paracentral y metropolitana.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: GARANTÍA 360° (#FCFCFC Background) -->
+    <section id="garantia" class="py-16 sm:py-24 bg-brandWhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brandBlueLight rounded-full -mr-20 -mt-20 pointer-events-none opacity-60"></div>
+
+                <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brandBlue text-white text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid fa-shield-check text-yellow-400"></i>
+                            <span>Respaldo Total</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">GARANTÍA 360°</h2>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Respaldamos cada reparación ante fallas atribuibles a nuestro trabajo. Nuestra cobertura integral abarca repuestos, reevaluación en banco de pruebas y mano de obra sin costo adicional.
+                        </p>
+                        
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                <div class="w-8 h-8 rounded-lg bg-brandBlue/10 text-brandBlue flex items-center justify-center font-bold">1</div>
+                                <span class="text-xs sm:text-sm font-semibold text-slate-700">Cobertura de repuestos reemplazados</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                <div class="w-8 h-8 rounded-lg bg-brandBlue/10 text-brandBlue flex items-center justify-center font-bold">2</div>
+                                <span class="text-xs sm:text-sm font-semibold text-slate-700">Reevaluación en banco de pruebas sin costo</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                <div class="w-8 h-8 rounded-lg bg-brandBlue/10 text-brandBlue flex items-center justify-center font-bold">3</div>
+                                <span class="text-xs sm:text-sm font-semibold text-slate-700">Mano de obra directa garantizada</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guarantee Coverage Cards -->
+                    <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+                        <!-- 15 Days Card -->
+                        <div class="bg-brandBlueLight/60 border border-brandBlue/20 rounded-2xl p-6 flex flex-col justify-between">
+                            <div>
+                                <span class="text-xs font-bold text-brandBlue uppercase tracking-wider">Reparación Parcial</span>
+                                <div class="text-4xl font-black text-brandBlue my-2">15 DÍAS</div>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    Garantía aplicable al reparar individualmente de 1 a 3 inyectores del vehículo.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-brandBlue/10 text-[11px] font-semibold text-brandBlue flex items-center gap-1.5">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span>Por inyector reparado</span>
+                            </div>
+                        </div>
+
+                        <!-- 60 Days Card (Highlighted) -->
+                        <div class="bg-brandBlue text-white rounded-2xl p-6 flex flex-col justify-between shadow-lg relative">
+                            <span class="absolute top-3 right-3 bg-yellow-400 text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Recomendado</span>
+                            <div>
+                                <span class="text-xs font-bold text-yellow-300 uppercase tracking-wider">Juego Completo</span>
+                                <div class="text-4xl font-black text-white my-2">60 DÍAS</div>
+                                <p class="text-xs text-blue-100 leading-relaxed">
+                                    Garantía extendida al reparar el juego completo de 4 inyectores. Asegura un funcionamiento uniforme de todo el motor.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-white/10 text-[11px] font-semibold text-yellow-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-star"></i>
+                                <span>Al reparar juego de 4 unidades</span>
+                            </div>
+                        </div>
+
+                        <!-- Restricciones / Exclusiones -->
+                        <div class="sm:col-span-2 bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-600">
+                            <div class="font-bold text-slate-800 mb-1 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-exclamation text-amber-500"></i>
+                                <span>Exclusiones de Cobertura:</span>
+                            </div>
+                            <p class="leading-relaxed">
+                                La garantía <strong>no cubre</strong> daños provocados por combustible contaminado (presencia de agua o partículas), fallas generadas por la bomba de alta presión ni instalación inadecuada en talleres ajenos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FLUJOGRAMA / ¿CÓMO TRABAJAMOS? (#013A88 Background) -->
+    <section id="proceso" class="py-16 sm:py-24 bg-brandBlue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3 py-1 rounded-full bg-white/10 text-yellow-300 text-xs font-semibold uppercase tracking-wider">
+                    Protocolo Estándar ANSI
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 mb-4 tracking-tight">Flujograma del Servicio DIES</h2>
+                <p class="text-blue-100 text-sm sm:text-base">
+                    Seguimos un proceso estructurado para garantizar transparencia, diagnóstico técnico certero y total satisfacción en cada trabajo.
+                </p>
+            </div>
+
+            <!-- Steps Interactive Display -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Step 1 -->
+                <div class="bg-white/10 border border-white/10 rounded-2xl p-6 relative">
+                    <span class="absolute top-4 right-4 text-2xl font-black text-white/20">01</span>
+                    <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-900 font-bold flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Recepción y Diagnóstico</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        Recepción del cliente e inyectores. Identificación de síntomas, marca y modelo. Pruebas electrónicas iniciales en banco técnico.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white/10 border border-white/10 rounded-2xl p-6 relative">
+                    <span class="absolute top-4 right-4 text-2xl font-black text-white/20">02</span>
+                    <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-900 font-bold flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Evaluación de Fallas</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        Si la falla está en los inyectores, se presentan las alternativas (Reparación, Reconstrucción o Inyector Nuevo), costos y garantía.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white/10 border border-white/10 rounded-2xl p-6 relative">
+                    <span class="absolute top-4 right-4 text-2xl font-black text-white/20">03</span>
+                    <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-900 font-bold flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Cotización Aprobada</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        Elaboración y entrega de cotización detallada. Una vez aprobada por el cliente, se procede de inmediato con la ejecución técnica.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white/10 border border-white/10 rounded-2xl p-6 relative">
+                    <span class="absolute top-4 right-4 text-2xl font-black text-white/20">04</span>
+                    <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-900 font-bold flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Ejecución Técnica</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        Limpieza ultrasónica, cambio de componentes desgastados con repuestos de calidad y reensamblaje bajo tolerancias de fabricante.
+                    </p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="bg-white/10 border border-white/10 rounded-2xl p-6 relative">
+                    <span class="absolute top-4 right-4 text-2xl font-black text-white/20">05</span>
+                    <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-900 font-bold flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Pruebas de Calidad</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        Verificación de parámetros en banco CR718. Si cumple con los estándares de entrega, se valida la orden para despacho.
+                    </p>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="bg-white/10 border border-white/10 rounded-2xl p-6 relative">
+                    <span class="absolute top-4 right-4 text-2xl font-black text-white/20">06</span>
+                    <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-900 font-bold flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Entrega y Explicación</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        Entrega al cliente con explicación técnica del trabajo realizado, reporte impreso de banco y entrega del certificado de Garantía 360°.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+   <!-- SECCIÓN DOCUMENTOS E INCRUSTACIÓN DE ARCHIVOS ORIGINALES -->
+    <section id="documentos" class="py-24 bg-dieselLight">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-dieselBlue mb-4">Documentación y Atestados del Proyecto</h2>
+                <p class="text-gray-600">Explora la investigación técnica, económica y los atestados completos directamente desde los visores incrustados sin alteraciones.</p>
+            </div>
+
+            <!-- Contenedor con pestañas o secciones para los archivos incrustados -->
+            <div class="space-y-16">
+                
+                <!-- 1. Documento Word / PDF de Investigación -->
+                <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+                    <div class="bg-dieselBlue px-6 py-4 flex justify-between items-center">
+                        <h3 class="font-bold text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-file-word text-blue-300"></i> Informe Técnico y Económico
+                        </h3>
+                        <a href="https://docs.google.com/document/d/1-PHaRgfVWzrVSRwIarsq70XUNG-xaXrN/edit?usp=sharing&ouid=100799931483162882637&rtpof=true&sd=true" target="_blank" class="text-xs bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded transition">Abrir en nueva pestaña</a>
+                    </div>
+                    <div class="p-4 bg-gray-50">
+                        <p class="text-sm text-gray-500 mb-3 px-2">Documento</p>
+                        <!-- Visor incrustado (iframe para Google Drive, OneDrive o PDF) -->
+                        <div class="w-full h-[500px] border border-gray-300 rounded-lg overflow-hidden bg-white shadow-inner">
+                            <!-- Reemplaza el src con el enlace de inserción (embed) de tu archivo en Google Drive o PDF -->
+                            <iframe src="https://docs.google.com/document/d/1-PHaRgfVWzrVSRwIarsq70XUNG-xaXrN/edit?usp=sharing&ouid=100799931483162882637&rtpof=true&sd=true" class="w-full h-full border-0"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Excel con Atestados Completos -->
+                <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+                    <div class="bg-dieselBlue text-white px-6 py-4 flex justify-between items-center">
+                        <h3 class="font-bold text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-file-excel text-green-400"></i> Atestados Financieros Completos
+                        </h3>
+                        <a href="https://docs.google.com/spreadsheets/d/1O9P-U_2LMDU7Wi_2LAb_QTlapkv1o0F0/edit?usp=sharing&ouid=100799931483162882637&rtpof=true&sd=true" target="_blank" class="text-xs bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded transition">Abrir en nueva pestaña</a>
+                    </div>
+                    <div class="p-4 bg-gray-50">
+                        <p class="text-sm text-gray-500 mb-3 px-2">Hoja de cálculo interactiva</p>
+                        <div class="w-full h-[500px] border border-gray-300 rounded-lg overflow-hidden bg-white shadow-inner">
+                            <!-- Enlace de inserción para Google Sheets -->
+                            <iframe src="https://docs.google.com/spreadsheets/d/1O9P-U_2LMDU7Wi_2LAb_QTlapkv1o0F0/edit?usp=sharing&ouid=100799931483162882637&rtpof=true&sd=true" class="w-full h-full border-0"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. PDF Resumen de Atestados -->
+                <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+                    <div class="bg-dieselBlue text-white px-6 py-4 flex justify-between items-center">
+                        <h3 class="font-bold text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-file-pdf text-red-400"></i> Resumen Ejecutivo y Evaluación Económica
+                        </h3>
+                        <a href="https://docs.google.com/document/d/1aCAvfUAV3pwaMNUXq5VQxfWt-pNXuSwZ/edit?usp=sharing&ouid=100799931483162882637&rtpof=true&sd=true" target="_blank" class="text-xs bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded transition">Abrir en nueva pestaña</a>
+                    </div>
+                    <div class="p-4 bg-gray-50">
+                        <p class="text-sm text-gray-500 mb-3 px-2">Documento</p>
+                        <div class="w-full h-[500px] border border-gray-300 rounded-lg overflow-hidden bg-white shadow-inner">
+                            <iframe src="https://docs.google.com/document/d/1aCAvfUAV3pwaMNUXq5VQxfWt-pNXuSwZ/edit?usp=sharing&ouid=100799931483162882637&rtpof=true&sd=true" class="w-full h-full border-0"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CONTACTO Y UBICACIÓN (#013A88 Background) -->
+    <section id="contacto" class="py-16 sm:py-24 bg-brandBlue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="px-3 py-1 rounded-full bg-white/10 text-yellow-300 text-xs font-semibold uppercase tracking-wider">
+                        Atención Inmediata
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Contáctanos</h2>
+                    <p class="text-blue-100 text-sm leading-relaxed">
+                        ¿Tienes dudas sobre tus inyectores diésel o deseas cotizar el servicio de recolección en tu taller? Escríbenos o visítanos directamente.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-yellow-400 shrink-0 mt-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Ubicación del Laboratorio</h4>
+                                <p class="text-xs text-blue-100 mt-0.5">Entre 61 y 1a Calle Pte. #3216, San Martín, San Salvador, El Salvador.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-yellow-400 shrink-0 mt-1">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Teléfono / WhatsApp</h4>
+                                <p class="text-xs text-blue-100 mt-0.5">1234-5678</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-yellow-400 shrink-0 mt-1">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Correo Electrónico</h4>
+                                <p class="text-xs text-blue-100 mt-0.5">dies@gmail.com / dies.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7 bg-white text-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+                    <h3 class="text-xl font-bold text-brandBlue mb-4">Enviar Consulta Técnica</h3>
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nombre Completo</label>
+                                <input type="text" required placeholder="Ej. Juan Pérez" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brandBlue focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Teléfono</label>
+                                <input type="tel" required placeholder="Ej. 7000-0000" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brandBlue focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Marca / Modelo de Vehículo</label>
+                                <input type="text" placeholder="Ej. Toyota Hilux / Isuzu D-Max" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brandBlue focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Servicio de Interés</label>
+                                <select class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brandBlue focus:outline-none bg-white">
+                                    <option>Reparación Completa</option>
+                                    <option>Diagnóstico y Ultrasonido</option>
+                                    <option>Inyectores Nuevos / Reman</option>
+                                    <option>Servicio de Recolección</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Detalle de la Consulta / Síntomas</label>
+                            <textarea rows="3" placeholder="Describe brevemente la falla que presenta el vehículo..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brandBlue focus:outline-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 rounded-xl bg-brandBlue text-white font-bold text-xs sm:text-sm hover:bg-brandBlueHover shadow-md transition-all">
+                            Enviar Solicitud
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <p class="font-semibold text-slate-300">DIES - Diésel Inyección El Salvador</p>
+                <p class="text-[11px] text-slate-500 mt-0.5">Proyecto académico de formulación realizado por Hernández y Rivas © 2026</p>
+            </div>
+            <div class="flex items-center gap-4 text-slate-400">
+                <a href="#inicio" class="hover:text-white transition-colors">Volver Arriba</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Document Viewer Main Tab Switching Logic
+        function switchTab(tabKey) {
+            // Hide all tab panes
+            document.querySelectorAll('.doc-content-pane').forEach(pane => {
+                pane.classList.add('hidden');
+            });
+
+            // Reset button active styles
+            document.querySelectorAll('.doc-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brandBlue', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+
+            // Show selected tab content pane
+            const activePane = document.getElementById(`tab-content-${tabKey}`);
+            if (activePane) {
+                activePane.classList.remove('hidden');
+            }
+
+            // Highlight selected button
+            const activeBtn = document.getElementById(`tab-btn-${tabKey}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-800', 'text-slate-300');
+                activeBtn.classList.add('bg-brandBlue', 'text-white');
+            }
+        }
+
+        // Excel Internal Sheet Tabs Switching Logic
+        function switchExcelSheet(sheetKey) {
+            // Hide all excel sheet panes
+            document.querySelectorAll('.excel-sheet-pane').forEach(sheet => {
+                sheet.classList.add('hidden');
+            });
+
+            // Reset excel sheet button styles
+            document.querySelectorAll('[id^="sheet-tab-"]').forEach(btn => {
+                btn.classList.remove('bg-brandBlue', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+
+            // Show targeted sheet pane
+            const targetSheet = document.getElementById(`excel-sheet-${sheetKey}`);
+            if (targetSheet) {
+                targetSheet.classList.remove('hidden');
+            }
+
+            // Highlight targeted button
+            const targetBtn = document.getElementById(`sheet-tab-${sheetKey}`);
+            if (targetBtn) {
+                targetBtn.classList.remove('bg-white', 'text-slate-700');
+                targetBtn.classList.add('bg-brandBlue', 'text-white');
+            }
+        }
+
+        // Toggle Fullscreen View for Document Container
+        function toggleFullscreen() {
+            const container = document.getElementById('doc-viewer-container');
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert('¡Gracias por comunicarte con DIES! Hemos recibido tu solicitud y nuestro personal técnico te contactará en breve.');
+            e.target.reset();
+        }
+    </script>
+
+</body>
+</html>
